@@ -1,11 +1,15 @@
-import './App.css';
-import AllTokenBalances from './components/Overview';
+import "./App.css";
+import axios from "axios";
 
 function App() {
+  async function backendCall() {
+    const response = await axios.get("http://localhost:8080/");
+    console.log(response.data);
+  }
+
   return (
     <div className="App">
-      <AllTokenBalances />
-      
+      <button onClick={backendCall}>Hello</button>
     </div>
   );
 }
