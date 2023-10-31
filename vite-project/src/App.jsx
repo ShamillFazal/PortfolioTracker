@@ -1,15 +1,19 @@
 import "./App.css";
-import axios from "axios";
+import { useState } from "react";
+import WalletInputs from "./components/WalletInputs";
 
 function App() {
-  async function backendCall() {
-    const response = await axios.get("http://localhost:8080/");
-    console.log(response.data);
-  }
+  const [wallet, setWallet] = useState("");
+  const [chain, setChain] = useState("0x1");
 
   return (
     <div className="App">
-      <button onClick={backendCall}>Hello</button>
+      <WalletInputs
+        wallet={wallet}
+        setWallet={setWallet}
+        chain={chain}
+        setChain={setChain}
+      />
     </div>
   );
 }
