@@ -16,12 +16,14 @@ function NativeTokens({
       },
     });
 
-    if (response.raw.balance && response.raw.usd) {
-      setNativeBalance((Number(response.raw.balance) / 1e18).toFixed(3));
+    console.log(response.data)
+
+    if (response.data.balance && response.data.usd) {
+      setNativeBalance((Number(response.data.balance) / 1e18).toFixed(3));
       setNativeValue(
         (
-          (Number(response.raw.balance) / 1e18) *
-          Number(response.raw.usd)
+          (Number(response.data.balance) / 1e18) *
+          Number(response.data.usd)
         ).toFixed(2)
       );
     }

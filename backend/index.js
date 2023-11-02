@@ -5,6 +5,8 @@ const app = express();
 const port = 8080;
 require("dotenv").config();
 
+Moralis.start({ apiKey: process.env.MORALIS_API_KEY })
+
 app.use(cors());
 
 
@@ -15,7 +17,7 @@ app.listen(port, () => {
 //GET AMOUNT AND VALUE OF NATIVE TOKENS
 
 app.get("/nativeBalance", async (req, res) => {
-    await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
+    // await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
   
     try {
       const { address, chain } = req.query;
@@ -39,7 +41,7 @@ app.get("/nativeBalance", async (req, res) => {
       } else if (chain === "0xa86a") {
         nativeCurrency = "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"; // Avalanche C-Chain (chain ID 43114)
       } else if (chain === "0xa4b1") {
-        nativeCurrency = "0xC72aB6f81403C4ff487aE708a2bF5423e7d5A9b3"; // Arbitrum One (chain ID 42161)
+        nativeCurrency = "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"; // Arbitrum One (chain ID 42161)
       }
   
       const nativePrice = await Moralis.EvmApi.token.getTokenPrice({
@@ -54,3 +56,30 @@ app.get("/nativeBalance", async (req, res) => {
       res.send(e);
     }
   });
+
+  // FTM & ARB causing node to crash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
