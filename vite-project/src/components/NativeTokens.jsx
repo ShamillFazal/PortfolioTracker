@@ -1,4 +1,5 @@
 import axios from "axios";
+import PropTypes from 'prop-types';
 
 function NativeTokens({
   wallet,
@@ -42,5 +43,15 @@ function NativeTokens({
     </>
   );
 }
+
+NativeTokens.propTypes = {
+    wallet: PropTypes.string.isRequired,
+    chain: PropTypes.string.isRequired,
+    nativeBalance: PropTypes.number.isRequired,
+    setNativeBalance: PropTypes.func.isRequired,
+    nativeValue: PropTypes.number.isRequired,
+    setNativeValue: PropTypes.func.isRequired,
+  };
+
 
 export default NativeTokens;

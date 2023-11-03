@@ -59,6 +59,8 @@ app.get("/nativeBalance", async (req, res) => {
 
   // FTM & ARB causing node to crash
 
+  
+
 
 
 
