@@ -37,12 +37,13 @@ app.get("/nativeBalance", async (req, res) => {
       } else if (chain === "0x38") {
         nativeCurrency = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"; // Binance Smart Chain (chain ID 97)
       } else if (chain === "0xfa") {
-        nativeCurrency = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"; // Fantom Opera (chain ID 250)
+        nativeCurrency = "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83"; // Fantom Opera (chain ID 250)
       } else if (chain === "0xa86a") {
         nativeCurrency = "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"; // Avalanche C-Chain (chain ID 43114)
       } else if (chain === "0xa4b1") {
         nativeCurrency = "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"; // Arbitrum One (chain ID 42161)
       }
+
   
       const nativePrice = await Moralis.EvmApi.token.getTokenPrice({
         address: nativeCurrency, //WETH Contract
@@ -53,11 +54,16 @@ app.get("/nativeBalance", async (req, res) => {
   
       res.send(nativeBalance);
     } catch (e) {
-      res.send(e);
+      console.error("Error:", e);
+      res.status(500).json({ error: "An error occurred" });
     }
   });
 
-  // FTM & ARB causing node to crash
+
+
+
+
+
 
   
 

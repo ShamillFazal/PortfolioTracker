@@ -47,9 +47,9 @@ function NativeTokens({
 NativeTokens.propTypes = {
     wallet: PropTypes.string.isRequired,
     chain: PropTypes.string.isRequired,
-    nativeBalance: PropTypes.number.isRequired,
+    nativeBalance: PropTypes.string.isRequired,
     setNativeBalance: PropTypes.func.isRequired,
-    nativeValue: PropTypes.number.isRequired,
+    nativeValue: PropTypes.string.isRequired,
     setNativeValue: PropTypes.func.isRequired,
   };
 

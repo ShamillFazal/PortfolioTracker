@@ -20,8 +20,8 @@ function WalletInputs({ wallet, setWallet, chain, setChain }) {
         <option value="0x89">Polygon</option>
         <option value="0x38">BSC</option>
         <option value="0xa86a">Avalanche</option>
-        <option value="0xaa">Fantom</option>
-        <option value="0x4">Arbitrum</option>
+        <option value="0xfa">Fantom</option>
+        <option value="0xa4b1">Arbitrum</option>
       </select>
     </>
   );
