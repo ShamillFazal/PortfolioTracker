@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import WalletInputs from "./components/WalletInputs";
 import NativeTokens from "./components/NativeTokens";
+import Tokens from "./components/Tokens";
 
 function App() {
   const [wallet, setWallet] = useState("");
