@@ -58,8 +58,6 @@ app.get("/nativeBalance", async (req, res) => {
 });
 
 app.get("/tokenBalances", async (req, res) => {
-  // await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
-
   try {
     const { address, chain } = req.query;
 
@@ -70,18 +68,44 @@ app.get("/tokenBalances", async (req, res) => {
 
     let tokens = response.raw;
 
+    // Create an array to hold legit tokens
     let realTokens = [];
 
-// Iterate through the tokens
-tokens.forEach(token => {
-  if (!token.possible_spam) {
-    realTokens.push(token); // Push non-spam tokens into realTokens
-  }
-});
+    // Iterate through the tokens
+    for (const token of tokens) {
+      if (!token.possible_spam) {
+        // Push non-spam tokens into realTokens
+        realTokens.push(token);
+      }
+    }
 
-    res.send(realTokens);
+    // Fetch prices for all legit tokens individually
+    for (const token of realTokens) {
+      try {
+        const priceResponse = await Moralis.EvmApi.token.getTokenPrice({
+          address: token.token_address,
+          chain: chain,
+        });
+
+        
+
+        // Check if price data is available
+        if (priceResponse.raw && priceResponse.raw.usdPrice) {
+          token.usd = priceResponse.raw.usdPrice;
+        } else {
+          token.usd = 0; // Set a default value if USD price is not available
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    res.send(realTokens); // Send the response with token.usd included
   } catch (e) {
     console.error("Error:", e);
     res.status(500).json({ error: "An error occurred" });
   }
 });
+
+
+

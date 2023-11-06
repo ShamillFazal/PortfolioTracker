@@ -10,8 +10,12 @@ function Tokens({ wallet, chain, tokens, setTokens }) {
       },
     });
 
+    console.log(response.data);
+
     if (response.data) {
       let tkns = response.data;
+
+    
 
       for (let i = 0; i < tkns.length; i++) {
         tkns[i].bal = (
