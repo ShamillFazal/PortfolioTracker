@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 function PortfolioValue({ nativeValue, tokens }) {
-  const [totalValue, setTotalValue] = useState("0");
+  const [totalValue, setTotalValue] = useState(0);
 
   useEffect(() => {
     console.log("nativeValue type:", typeof nativeValue);
@@ -11,7 +11,7 @@ function PortfolioValue({ nativeValue, tokens }) {
     console.log(nativeValue)
     let val = 0;
     for (let i = 0; i < tokens.length; i++) {
-      val = val + Number(tokens[i].val);
+      val = val + Number(tokens[i].value);
     }
 
     val = val + Number(nativeValue);
