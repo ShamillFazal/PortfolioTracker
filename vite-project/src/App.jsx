@@ -3,6 +3,7 @@ import { useState } from "react";
 import WalletInputs from "./components/WalletInputs";
 import NativeTokens from "./components/NativeTokens";
 import Tokens from "./components/Tokens";
+import PortfolioValue from "./components/PortfolioValue";
 
 function App() {
   const [wallet, setWallet] = useState("");
@@ -32,6 +33,10 @@ function App() {
         chain={chain}
         tokens={tokens}
         setTokens={setTokens}
+      />
+      <PortfolioValue
+        nativeValue={nativeValue}
+        tokens={tokens}
       />
     </div>
   );
