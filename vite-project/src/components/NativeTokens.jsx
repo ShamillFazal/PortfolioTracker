@@ -1,5 +1,5 @@
 import axios from "axios";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function NativeTokens({
   wallet,
@@ -16,8 +16,6 @@ function NativeTokens({
         chain: chain,
       },
     });
-
-    console.log(response.data)
 
     if (response.data.balance && response.data.usd) {
       setNativeBalance((Number(response.data.balance) / 1e18).toFixed(3));
@@ -45,14 +43,12 @@ function NativeTokens({
 }
 
 NativeTokens.propTypes = {
-    wallet: PropTypes.string.isRequired,
-    chain: PropTypes.string.isRequired,
-    nativeBalance: PropTypes.string.isRequired,
-    setNativeBalance: PropTypes.func.isRequired,
-    nativeValue: PropTypes.string.isRequired,
-    setNativeValue: PropTypes.func.isRequired,
-  };
-
+  wallet: PropTypes.string.isRequired,
+  chain: PropTypes.string.isRequired,
+  nativeBalance: PropTypes.string.isRequired,
+  setNativeBalance: PropTypes.func.isRequired,
+  nativeValue: PropTypes.string.isRequired,
+  setNativeValue: PropTypes.func.isRequired,
+};
 
 export default NativeTokens;
-

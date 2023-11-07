@@ -5,16 +5,14 @@ function PortfolioValue({ nativeValue, tokens }) {
   const [totalValue, setTotalValue] = useState(0);
 
   useEffect(() => {
-    console.log("nativeValue type:", typeof nativeValue);
-    console.log("tokens type:", typeof tokens);
-    console.log("tokens array:", tokens);
-    console.log(nativeValue)
     let val = 0;
+
     for (let i = 0; i < tokens.length; i++) {
       val = val + Number(tokens[i].value);
     }
 
     val = val + Number(nativeValue);
+
     setTotalValue(val.toFixed(2));
   }, [nativeValue, tokens]);
 
