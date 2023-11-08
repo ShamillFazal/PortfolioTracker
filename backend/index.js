@@ -87,8 +87,6 @@ app.get("/tokenBalances", async (req, res) => {
           chain: chain,
         });
 
-        
-
         // Check if price data is available
         if (priceResponse.raw && priceResponse.raw.usdPrice) {
           token.usd = priceResponse.raw.usdPrice;
@@ -107,8 +105,20 @@ app.get("/tokenBalances", async (req, res) => {
   }
 });
 
+app.get("/tokenTransfers", async (req, res) => {
+  try {
+    const { address, chain } = req.query;
 
+    const response = await Moralis.EvmApi.token.getWalletTokenTransfers({
+      address: address,
+      chain: chain,
+    });
 
+    const userTransfers = response.raw.result;
 
-
-
+    res.send(userTransfers); 
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
