@@ -31,19 +31,21 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
             <th>Date</th>
           </tr>
           {transfers.length > 0 &&
-            transfers.map((e) => {
-              return (
-                <tr key={e.address}>
-                  <td>{e.symbol}</td>
-                  <td>
-                    {(Number(e.value) / Number(`1e${e.decimals}`)).toFixed(3)}
-                  </td>
-                  <td>{e.from_address}</td>
-                  <td>{e.to_address}</td>
-                  <td>{e.block_timestamp}</td>
-                </tr>
-              );
-            })}
+            transfers
+              .filter((e) => !e.possible_spam) // Filter out tokens with possible_spam true
+              .map((e) => {
+                return (
+                  <tr key={e.address}>
+                    <td>{e.token_symbol}</td>
+                    <td>
+                      {(Number(e.value) / Number(`1e${e.decimals}`)).toFixed(3)}
+                    </td>
+                    <td>{e.from_address}</td>
+                    <td>{e.to_address}</td>
+                    <td>{e.block_timestamp}</td>
+                  </tr>
+                );
+              })}
         </table>
       </div>
     </>
