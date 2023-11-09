@@ -11,6 +11,7 @@ function App() {
   const [nativeBalance, setNativeBalance] = useState(0);
   const [nativeValue, setNativeValue] = useState(0);
   const [tokens, setTokens] = useState([]);
+  const [transfers, setTransfers] = useState([]);
 
   return (
     <div className="App">
@@ -37,6 +38,12 @@ function App() {
       <PortfolioValue
         nativeValue={nativeValue}
         tokens={tokens}
+      />
+      <TransferHistory
+        chain={chain}
+        wallet={wallet}
+        transfers={transfers}
+        setTransfers={setTransfers}
       />
     </div>
   );
