@@ -9,9 +9,10 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
         chain: chain,
       },
     });
+    console.log(response);
 
-    if (response.raw) {
-      setTransfers(response.raw);
+    if (response.data) {
+      setTransfers(response.data);
     }
   }
 

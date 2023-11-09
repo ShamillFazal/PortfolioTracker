@@ -4,6 +4,7 @@ import WalletInputs from "./components/WalletInputs";
 import NativeTokens from "./components/NativeTokens";
 import Tokens from "./components/Tokens";
 import PortfolioValue from "./components/PortfolioValue";
+import TransferHistory from "./components/TransferHistory";
 
 function App() {
   const [wallet, setWallet] = useState("");
