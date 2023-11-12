@@ -17,7 +17,8 @@ function NativeTokens({
       },
     });
 
-    if (response.data.balance && response.data.usd) { // Checking if response data contains balance and USD values
+    if (response.data.balance && response.data.usd) {
+      // Checking if response data contains balance and USD values
       setNativeBalance((Number(response.data.balance) / 1e18).toFixed(3)); // Setting native balance after converting and formatting
       setNativeValue(
         (

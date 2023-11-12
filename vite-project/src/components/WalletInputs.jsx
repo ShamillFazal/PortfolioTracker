@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types';
-
-
+import PropTypes from "prop-types";
 
 function WalletInputs({ wallet, setWallet, chain, setChain }) {
   return (
@@ -28,10 +26,10 @@ function WalletInputs({ wallet, setWallet, chain, setChain }) {
 }
 
 WalletInputs.propTypes = {
-    wallet: PropTypes.string.isRequired,
-    setWallet: PropTypes.func.isRequired,
-    chain: PropTypes.string.isRequired,
-    setChain: PropTypes.func.isRequired,
-  };
+  wallet: PropTypes.string.isRequired,
+  setWallet: PropTypes.func.isRequired,
+  chain: PropTypes.string.isRequired,
+  setChain: PropTypes.func.isRequired,
+};
 
 export default WalletInputs;

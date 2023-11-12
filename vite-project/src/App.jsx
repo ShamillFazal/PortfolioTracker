@@ -30,16 +30,13 @@ function App() {
         nativeValue={nativeValue}
         setNativeValue={setNativeValue}
       />
-      <Tokens 
+      <Tokens
         wallet={wallet}
         chain={chain}
         tokens={tokens}
         setTokens={setTokens}
       />
-      <PortfolioValue
-        nativeValue={nativeValue}
-        tokens={tokens}
-      />
+      <PortfolioValue nativeValue={nativeValue} tokens={tokens} />
       <TransferHistory
         chain={chain}
         wallet={wallet}

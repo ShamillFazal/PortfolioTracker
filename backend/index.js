@@ -116,10 +116,9 @@ app.get("/tokenTransfers", async (req, res) => {
 
     const userTransfers = response.raw.result;
 
-    res.send(userTransfers); 
+    res.send(userTransfers);
   } catch (e) {
     console.error("Error:", e);
     res.status(500).json({ error: "An error occurred" });
   }
 });
-

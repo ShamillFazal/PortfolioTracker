@@ -12,7 +12,7 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
     console.log(response);
 
     if (response.data) {
-      setTransfers(response.data);
+      setTransfers(response.data); 
     }
   }
 
@@ -33,16 +33,16 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
           {transfers.length > 0 &&
             transfers
               .filter((e) => !e.possible_spam) // Filter out tokens with possible_spam true
-              .map((e) => {
+              .map((e) => { // Still need to re format the date timestamp to be more readable
                 return (
-                  <tr key={e.address}>
+                  <tr key={e.address}> 
                     <td>{e.token_symbol}</td>
                     <td>
                       {(Number(e.value) / Number(`1e${e.decimals}`)).toFixed(3)}
                     </td>
                     <td>{e.from_address}</td>
                     <td>{e.to_address}</td>
-                    <td>{e.block_timestamp}</td>
+                    <td>{e.block_timestamp}</td>  
                   </tr>
                 );
               })}
