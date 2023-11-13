@@ -42,7 +42,7 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
                     </td>
                     <td>{e.from_address}</td>
                     <td>{e.to_address}</td>
-                    <td>{e.block_timestamp}</td>  
+                    <td>{new Date(e.block_timestamp).toLocaleString()}</td>  
                   </tr>
                 );
               })}

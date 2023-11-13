@@ -16,7 +16,7 @@ app.listen(port, () => {
 //GET AMOUNT AND VALUE OF NATIVE TOKENS
 
 app.get("/nativeBalance", async (req, res) => {
-  // await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
+  
 
   try {
     const { address, chain } = req.query;
@@ -44,7 +44,7 @@ app.get("/nativeBalance", async (req, res) => {
     }
 
     const nativePrice = await Moralis.EvmApi.token.getTokenPrice({
-      address: nativeCurrency, //WETH Contract
+      address: nativeCurrency, 
       chain: chain,
     });
 
