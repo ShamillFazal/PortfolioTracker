@@ -13,6 +13,7 @@ function App() {
   const [nativeValue, setNativeValue] = useState(0);
   const [tokens, setTokens] = useState([]);
   const [transfers, setTransfers] = useState([]);
+  const [nfts, setNfts] = useState([]);
 
   return (
     <div className="App">
@@ -36,13 +37,22 @@ function App() {
         tokens={tokens}
         setTokens={setTokens}
       />
-      <PortfolioValue nativeValue={nativeValue} tokens={tokens} />
+      <PortfolioValue
+        nativeValue={nativeValue} 
+        tokens={tokens} 
+        />
       <TransferHistory
         chain={chain}
         wallet={wallet}
         transfers={transfers}
         setTransfers={setTransfers}
       />
+      <Nfts 
+        wallet={wallet} 
+        chain={chain} 
+        nfts={nfts} 
+        setNfts={setNfts} 
+        />
     </div>
   );
 }

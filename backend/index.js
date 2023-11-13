@@ -16,8 +16,6 @@ app.listen(port, () => {
 //GET AMOUNT AND VALUE OF NATIVE TOKENS
 
 app.get("/nativeBalance", async (req, res) => {
-  
-
   try {
     const { address, chain } = req.query;
 
@@ -44,7 +42,7 @@ app.get("/nativeBalance", async (req, res) => {
     }
 
     const nativePrice = await Moralis.EvmApi.token.getTokenPrice({
-      address: nativeCurrency, 
+      address: nativeCurrency,
       chain: chain,
     });
 
@@ -117,6 +115,22 @@ app.get("/tokenTransfers", async (req, res) => {
     const userTransfers = response.raw.result;
 
     res.send(userTransfers);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
+
+app.get("/nftBalance", async (req, res) => {
+  try {
+    const { address, chain } = req.query;
+
+    const response = await Moralis.EvmApi.nft.getWalletNFTs({
+      address: address,
+      chain: chain,
+    });
+
+    res.send(response.raw);
   } catch (e) {
     console.error("Error:", e);
     res.status(500).json({ error: "An error occurred" });
