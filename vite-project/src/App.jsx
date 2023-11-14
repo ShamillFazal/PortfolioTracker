@@ -5,6 +5,7 @@ import NativeTokens from "./components/NativeTokens";
 import Tokens from "./components/Tokens";
 import PortfolioValue from "./components/PortfolioValue";
 import TransferHistory from "./components/TransferHistory";
+import Nfts from "./components/Nfts";
 
 function App() {
   const [wallet, setWallet] = useState("");
