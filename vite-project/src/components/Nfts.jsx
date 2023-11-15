@@ -23,16 +23,29 @@ function Nfts({ wallet, chain, nfts, setNfts }) {
     for (let i = 0; i < p.length; i++) {
       let meta = JSON.parse(p[i].metadata);
       if (meta && meta.image) {
-        if (meta.image.includes(".")) { // Use the image URL directly if it includes a dot.
-          p[i].image = meta.image;
+        // Check if the image URL has a nested "ipfs://ipfs/"
+        if (meta.image.startsWith("ipfs://ipfs/")) {
+          // Remove the nested "ipfs://" prefix
+          p[i].image = "https://ipfs.io/ipfs/" + meta.image.slice(12);
+        } else if (meta.image.startsWith("ipfs://")) {
+          // If the image URL starts with "ipfs://", remove the prefix
+          p[i].image = "https://ipfs.io/ipfs/" + meta.image.slice(7);
+        } else if (!meta.image.includes("https://ipfs.io/ipfs/")) {
+          // Ensure the image URL doesn't already have the prefix
+          p[i].image = "https://ipfs.io/ipfs/" + meta.image;
         } else {
-          p[i].image = "https://ipfs.moralis.io:2053/ipfs/" + meta.image; // Otherwise, construct the image URL.
+          // If it already has the correct prefix, use the URL as is
+          p[i].image = meta.image;
         }
+  
+        // Log the image URL for each NFT
+        console.log(p[i].image);
       }
     }
-
-    setNfts(p); // Update the component state with the processed NFTs.
+  
+    setNfts(p);
   }
+  
 
   return (
     <>
@@ -40,15 +53,16 @@ function Nfts({ wallet, chain, nfts, setNfts }) {
       <div>
         <button onClick={getUserNfts}>Get NFTs</button>
         
-        {/* Mapping over the array of NFTs to render each NFT along with its information.t */}
+        {/* Mapping over the array of NFTs to render each NFT along with its information */}
 
         {nfts.length > 0 &&
           nfts.map((e) => {
+            
             return (
               <>
-                {e.image && <img src={e.image} alt={e.name} />}
-                <span>Name: {e.name},</span>
-                <span>(ID: {e.token_id})</span>
+                {e.image && <img src={e.image} alt={e.name} width={250} />}
+                <span>{e.name} #{e.token_id}</span>
+        
                 <br />
               </>
             );
