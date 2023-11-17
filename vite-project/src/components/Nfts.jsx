@@ -38,8 +38,7 @@ function Nfts({ wallet, chain, nfts, setNfts }) {
           p[i].image = meta.image;
         }
   
-        // Log the image URL for each NFT
-        console.log(p[i].image);
+
       }
     }
   
