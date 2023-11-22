@@ -1,9 +1,46 @@
 import axios from "axios";
 import Proptypes from "prop-types";
+import { useState, useEffect } from "react";
 
+function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
+  const [nameF, setNameF] = useState("");
+  const [idF, setIdF] = useState("");
 
+  useEffect(() => {
+    if (nameF === 0 && idF === 0) {
+      return setFilteredNfts(nfts);
+    }
+  
+    let filteredNfts = [];
+  
+    for (let i = 0; i < nfts.length; i++) {
+      if (
+        nfts[i].name &&
+        nfts[i].name.toLowerCase().includes(nameF.toLowerCase()) &&
+        idF.length === 0
+      ) {
+        filteredNfts.push(nfts[i]);
+      } else if (
+        nfts[i].token_id &&
+        nfts[i].token_id.toLowerCase().includes(idF.toLowerCase()) &&
+        nameF.length === 0
+      ) {
+        filteredNfts.push(nfts[i]);
+      } else if (
+        nfts[i].token_id &&
+        nfts[i].token_id.toLowerCase().includes(idF.toLowerCase()) &&
+        nfts[i].name &&
+        nfts[i].name.toLowerCase().includes(nameF.toLowerCase())
+      ) {
+        filteredNfts.push(nfts[i]);
+      }
+    }
+  
+    setFilteredNfts(filteredNfts);
+  }, [nameF, idF]);
+  
+  
 
-function Nfts({ wallet, chain, nfts, setNfts }) {
   async function getUserNfts() {
     const response = await axios.get("http://localhost:8080/nftBalance", {
       params: {
@@ -37,37 +74,39 @@ function Nfts({ wallet, chain, nfts, setNfts }) {
           // If it already has the correct prefix, use the URL as is
           p[i].image = meta.image;
         }
-  
-
       }
     }
-  
+
     setNfts(p);
+    setFilteredNfts(p);
   }
-  
 
   return (
     <>
       <h1>NFTs</h1>
       <div>
         <button onClick={getUserNfts}>Get NFTs</button>
-        
+        <span> Name Filter</span>
+        <input onChange={(e) => setNameF(e.target.value)} value={nameF}></input>
+        <span> ID Filter</span>
+        <input onChange={(e) => setIdF(e.target.value)} value={idF}></input>
+        <br />
         {/* Mapping over the array of NFTs to render each NFT along with its information */}
 
-        {nfts.length > 0 &&
-          nfts.map((e) => {
-            
+        {filteredNfts.length > 0 &&
+          filteredNfts.map((e) => {
             return (
               <>
                 {e.image && <img src={e.image} alt={e.name} width={250} />}
-                <span>{e.name} #{e.token_id}</span>
-        
+                <span>
+                  {e.name} #{e.token_id}
+                </span>
+
                 <br />
               </>
             );
           })}
       </div>
-      ;
     </>
   );
 }
@@ -77,6 +116,8 @@ Nfts.propTypes = {
   chain: Proptypes.string.isRequired,
   nfts: Proptypes.array.isRequired,
   setNfts: Proptypes.func.isRequired,
+  filteredNfts: Proptypes.array.isRequired,
+  setFilteredNfts: Proptypes.func.isRequired,
 };
 
 export default Nfts;
