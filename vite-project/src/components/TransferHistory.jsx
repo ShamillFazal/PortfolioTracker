@@ -20,38 +20,32 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
 
   return (
     <>
-      <h1>Transfer History</h1>
+      <div className="tabHeading">
+        History <Reload onClick={getTransfers} />
+      </div>
       <div>
-        <button onClick={getTransfers}>Fetch Transfers</button>
-
-        <table>
-          <tr>
-            <th>Token</th>
-            <th>Amount</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Date</th>
-          </tr>
-          {transfers.length > 0 &&
-            transfers
-              .filter((e) => !e.possible_spam) // Filter out tokens with possible_spam true
-              .map((e) => {
-                // Still need to re format the date timestamp to be more readable
-                return (
-                  <tr key={e.address}>
-                    <td>{e.token_symbol}</td>
-                    <td>
-                      {(
-                        Number(e.value) / Number(`1e${e.token_decimals}`)
-                      ).toFixed(3)}
-                    </td>
-                    <td>{e.from_address}</td>
-                    <td>{e.to_address}</td>
-                    <td>{new Date(e.block_timestamp).toLocaleString()}</td>
-                  </tr>
-                );
-              })}
-        </table>
+        {transfers.length > 0 && (
+          <Table
+            pageSize={8}
+            noPagination={false}
+            style={{ width: "90vw" }}
+            columnsConfig="16vw 18vw 18vw 18vw 16vw"
+            data={transfers.map((e) => [
+              e.token_symbol,
+              (Number(e.value) / Number(`1e${e.token_decimals}`)).toFixed(3),
+              `${e.from_address.slice(0, 4)}...${e.from_address.slice(38)}`,
+              `${e.to_address.slice(0, 4)}...${e.to_address.slice(38)}`,
+              new Date(e.block_timestamp).toLocaleString(),
+            ])}
+            header={[
+              <span key="token">Token</span>,
+              <span key="value">Amount</span>,
+              <span key="from">From</span>,
+              <span key="to">To</span>,
+              <span key="date">Date</span>,
+            ]}
+          />
+        )}
       </div>
     </>
   );
@@ -63,5 +57,6 @@ TransferHistory.propTypes = {
   transfers: PropTypes.array.isRequired,
   setTransfers: PropTypes.func.isRequired,
 };
+
 
 export default TransferHistory;

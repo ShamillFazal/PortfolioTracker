@@ -1,6 +1,8 @@
 import axios from "axios";
 import Proptypes from "prop-types";
 import { useState, useEffect } from "react";
+import { Reload } from "@web3uikit/icons";
+import { Input } from "@web3uikit/core";
 
 function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
   const [nameF, setNameF] = useState("");
@@ -10,9 +12,9 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
     if (nameF === 0 && idF === 0) {
       return setFilteredNfts(nfts);
     }
-  
+
     let filteredNfts = [];
-  
+
     for (let i = 0; i < nfts.length; i++) {
       if (
         nfts[i].name &&
@@ -35,11 +37,9 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
         filteredNfts.push(nfts[i]);
       }
     }
-  
+
     setFilteredNfts(filteredNfts);
   }, [nameF, idF]);
-  
-  
 
   async function getUserNfts() {
     const response = await axios.get("http://localhost:8080/nftBalance", {
@@ -83,26 +83,37 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
 
   return (
     <>
-      <h1>NFTs</h1>
-      <div>
-        <button onClick={getUserNfts}>Get NFTs</button>
-        <span> Name Filter</span>
-        <input onChange={(e) => setNameF(e.target.value)} value={nameF}></input>
-        <span> ID Filter</span>
-        <input onChange={(e) => setIdF(e.target.value)} value={idF}></input>
-        <br />
-        {/* Mapping over the array of NFTs to render each NFT along with its information */}
+      <div className="tabHeading">
+        NFT&apos;s <Reload onClick={getUserNfts} />
+      </div>
 
+      <div className="filter">
+        <Input
+          id="Namef"
+          label="Name Filter"
+          value={nameF}
+          onChange={(e) => setNameF(e.target.value)}
+        />
+
+        <Input
+          id="Idf"
+          label="ID Filter"
+          value={idF}
+          onChange={(e) => setIdF(e.target.value)}
+        />
+      </div>
+
+      <div className="nftList">
         {filteredNfts.length > 0 &&
           filteredNfts.map((e) => {
             return (
               <>
-                {e.image && <img src={e.image} alt={e.name} width={250} />}
-                <span>
-                  {/* {e.name} #{e.token_id} */}
-                </span>
+                <div className="nftInfo">
+                  {e.image && <img src={e.image} width={200} />}
 
-                <br />
+                  <div>{e.name},</div>
+                  <div>#{e.token_id.slice(0, 5)}</div>
+                </div>
               </>
             );
           })}
