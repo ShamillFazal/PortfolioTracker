@@ -99,7 +99,7 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
               <>
                 {e.image && <img src={e.image} alt={e.name} width={250} />}
                 <span>
-                  {e.name} #{e.token_id}
+                  {/* {e.name} #{e.token_id} */}
                 </span>
 
                 <br />
