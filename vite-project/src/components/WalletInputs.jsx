@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Input, Select, CryptoLogos } from "@web3uikit/core";
 import logo from "../images/Shamill-logos_transparent.png";
 
-function WalletInputs({ wallet, setWallet, chain, setChain }) {
+function WalletInputs({ wallet, setWallet, setChain }) {
   return (
     <>
       <header className="bg-white border-b border-gray-300 pb-4 flex flex-col md:flex-row items-center justify-between">
@@ -53,19 +53,19 @@ function WalletInputs({ wallet, setWallet, chain, setChain }) {
               {
                 id: "avax",
                 label: "Avalanche",
-                value: "0xA86A",
+                value: "0xa86a",
                 prefix: <CryptoLogos chain="avalanche" />,
               },
               {
                 id: "fantom",
                 label: "Fantom",
-                value: "0xFA",
+                value: "0xfa",
                 prefix: <CryptoLogos chain="fantom" />,
               },
               {
                 id: "arbitrum",
                 label: "Arbitrum",
-                value: "0xA4B1",
+                value: "0xa4b1",
                 prefix: <CryptoLogos chain="arbitrum" />,
               }
             ]}

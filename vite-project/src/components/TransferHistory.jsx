@@ -1,5 +1,7 @@
 import axios from "axios";
 import PropTypes from "prop-types";
+import { Reload } from "@web3uikit/icons";
+import { Table } from "@web3uikit/core";
 
 function TransferHistory({ chain, wallet, transfers, setTransfers }) {
   async function getTransfers() {

@@ -1,5 +1,7 @@
 import axios from "axios";
 import PropTypes from "prop-types";
+import { Table } from "@web3uikit/core";
+import { Reload } from "@web3uikit/icons";
 
 function NativeTokens({
   wallet,
@@ -31,14 +33,23 @@ function NativeTokens({
 
   return (
     <>
-      <h1>Get Tokens</h1>
-      <p>
-        <button onClick={getNativeBalance}>Get Balance</button>
-        <br />
-        <span>
-          Native Balance: {nativeBalance}, ($ {nativeValue})
-        </span>
-      </p>
+      <div className="tabHeading">
+        Native Balance <Reload onClick={getNativeBalance} />
+      </div>
+      {nativeBalance > 0 && nativeValue > 0 && (
+        <Table
+          pageSize={1}
+          noPagination={true}
+          // style={{ width: "900px" }}
+          columnsConfig="300px 300px 250px"
+          data={[["Native", nativeBalance, `$${nativeValue}`]]}
+          header={[
+            <span key="currency">Currency</span>,
+            <span key="balance">Balance</span>,
+            <span key="value">Value</span>,
+          ]}
+        />
+      )}
     </>
   );
 }

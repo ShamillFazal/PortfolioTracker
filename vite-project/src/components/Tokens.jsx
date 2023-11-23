@@ -1,5 +1,7 @@
+import { Reload } from "@web3uikit/icons";
 import axios from "axios";
 import PropTypes from "prop-types";
+import { Table } from "@web3uikit/core";
 
 function Tokens({ wallet, chain, tokens, setTokens }) {
   async function getTokenBalances() {
@@ -28,21 +30,26 @@ function Tokens({ wallet, chain, tokens, setTokens }) {
   }
   return (
     <>
-      <p>
-        <button onClick={getTokenBalances}>Get Tokens</button>
-        <br />
-        {tokens.length > 0 &&
-          tokens.map((token) => {
-            return (
-              <>
-                <span>
-                  {token.symbol} {token.bal}, ($ {token.value})
-                </span>
-                <br />
-              </>
-            );
-          })}
-      </p>
+      
+        <div className="tabHeading">Tokens <Reload onClick={getTokenBalances}/></div>
+
+        {tokens.length > 0 && (
+
+        <Table
+          pageSize={6}
+          noPagination={true}
+          // style={{ width: "900px" }}
+          columnsConfig="300px 300px 250px"
+          data={tokens.map((e) => [e.symbol, e.bal, `$${e.value}`] )}
+          header={[
+            <span key="currency">Currency</span>,
+            <span key="balance">Balance</span>,
+            <span key="value">Value</span>,
+          ]}
+        />
+        )}
+
+      
     </>
   );
 }

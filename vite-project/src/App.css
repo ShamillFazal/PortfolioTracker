@@ -14,3 +14,12 @@
   margin: 0;
   padding: 100px;
 }
+
+.tabHeading {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 20px 0px;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+}
