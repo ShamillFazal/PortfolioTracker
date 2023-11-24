@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Input, Select, CryptoLogos } from "@web3uikit/core";
-import logo from "../images/Shamill-logos_transparent.png";
+import logo from "../images/cat-logo.svg";
 
 function WalletInputs({ wallet, setWallet, setChain }) {
   return (

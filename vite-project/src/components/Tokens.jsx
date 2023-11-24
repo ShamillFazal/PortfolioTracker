@@ -31,18 +31,18 @@ function Tokens({ wallet, chain, tokens, setTokens }) {
   return (
     <>
       
-        <div className="tabHeading">Tokens <Reload onClick={getTokenBalances}/></div>
+        <div className="tabHeading">Assets<Reload onClick={getTokenBalances}/></div>
 
         {tokens.length > 0 && (
 
         <Table
           pageSize={6}
           noPagination={true}
-          // style={{ width: "900px" }}
+          style={{ width: "900px" }}
           columnsConfig="300px 300px 250px"
           data={tokens.map((e) => [e.symbol, e.bal, `$${e.value}`] )}
           header={[
-            <span key="currency">Currency</span>,
+            <span key="currency">Token</span>,
             <span key="balance">Balance</span>,
             <span key="value">Value</span>,
           ]}

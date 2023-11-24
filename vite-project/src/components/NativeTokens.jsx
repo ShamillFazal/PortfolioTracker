@@ -40,11 +40,11 @@ function NativeTokens({
         <Table
           pageSize={1}
           noPagination={true}
-          // style={{ width: "900px" }}
+          style={{ width: "900px" }}
           columnsConfig="300px 300px 250px"
           data={[["Native", nativeBalance, `$${nativeValue}`]]}
           header={[
-            <span key="currency">Currency</span>,
+            <span key="currency">Token</span>,
             <span key="balance">Balance</span>,
             <span key="value">Value</span>,
           ]}
