@@ -20,7 +20,7 @@ function PortfolioValue({ nativeValue, tokens }) {
   return (
     <>
       <div className="container mx-auto flex justify-end">
-      <div className="min-w-max">
+      <div className="w-96">
       <Widget info={`$${totalValue}`} title="Net Worth" />
       </div>
         {/* <div className="flex-initial border-solid border-2 border-gray rounded-md max-w-sm">
