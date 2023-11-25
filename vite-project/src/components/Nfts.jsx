@@ -5,41 +5,19 @@ import { Reload } from "@web3uikit/icons";
 import { Input } from "@web3uikit/core";
 
 function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
-  const [nameF, setNameF] = useState("");
-  const [idF, setIdF] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    if (nameF === 0 && idF === 0) {
-      return setFilteredNfts(nfts);
-    }
+    const filteredNfts = nfts.filter((nft) => {
+      const nameMatch = nft.name && nft.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const idMatch = nft.token_id && nft.token_id.toLowerCase().includes(searchQuery.toLowerCase());
 
-    let filteredNfts = [];
-
-    for (let i = 0; i < nfts.length; i++) {
-      if (
-        nfts[i].name &&
-        nfts[i].name.toLowerCase().includes(nameF.toLowerCase()) &&
-        idF.length === 0
-      ) {
-        filteredNfts.push(nfts[i]);
-      } else if (
-        nfts[i].token_id &&
-        nfts[i].token_id.toLowerCase().includes(idF.toLowerCase()) &&
-        nameF.length === 0
-      ) {
-        filteredNfts.push(nfts[i]);
-      } else if (
-        nfts[i].token_id &&
-        nfts[i].token_id.toLowerCase().includes(idF.toLowerCase()) &&
-        nfts[i].name &&
-        nfts[i].name.toLowerCase().includes(nameF.toLowerCase())
-      ) {
-        filteredNfts.push(nfts[i]);
-      }
-    }
+      // Require a match on either name or ID
+      return nameMatch || idMatch;
+    });
 
     setFilteredNfts(filteredNfts);
-  }, [nameF, idF]);
+  }, [searchQuery, nfts]);
 
   async function getUserNfts() {
     const response = await axios.get("http://localhost:8080/nftBalance", {
@@ -55,7 +33,6 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
   }
 
   // Function to process and update the NFTs by extracting image URLs from metadata.
-
   function nftP(p) {
     for (let i = 0; i < p.length; i++) {
       let meta = JSON.parse(p[i].metadata);
@@ -89,17 +66,10 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
 
       <div className="filter">
         <Input
-          id="Namef"
-          label="Name Filter"
-          value={nameF}
-          onChange={(e) => setNameF(e.target.value)}
-        />
-
-        <Input
-          id="Idf"
-          label="ID Filter"
-          value={idF}
-          onChange={(e) => setIdF(e.target.value)}
+          id="SearchFilter"
+          label="Search by Name or ID"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
@@ -107,14 +77,12 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
         {filteredNfts.length > 0 &&
           filteredNfts.map((e) => {
             return (
-              <>
-                <div className="nftInfo">
-                  {e.image && <img src={e.image} width={200} />}
+              <div key={e.token_id} className="nftInfo">
+                {e.image && <img src={e.image} width={200} alt={e.name} />}
 
-                  <div>{e.name},</div>
-                  <div>#{e.token_id.slice(0, 5)}</div>
-                </div>
-              </>
+                <div>{e.name},</div>
+                <div>#{e.token_id.slice(0, 5)}</div>
+              </div>
             );
           })}
       </div>

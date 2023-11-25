@@ -28,7 +28,8 @@ function App() {
       />
 
       <div className="content">
-        <PortfolioValue nativeValue={nativeValue} tokens={tokens} />
+      
+        <PortfolioValue nativeValue={nativeValue} tokens={tokens} wallet={wallet} />
         <TabList>
           <Tab tabKey={1} tabName={"Tokens"}>
             <NativeTokens
