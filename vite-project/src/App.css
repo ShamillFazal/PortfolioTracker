@@ -49,3 +49,22 @@
   gap: 40px;
   flex-wrap: wrap;
 }
+
+@media only screen and (max-width: 756px) {
+  .content {
+    margin: 0;
+    padding: 0px;
+  }
+
+  .nftList {
+    justify-content: center;
+  }
+
+  .filter {
+    justify-content: center;
+  }
+
+  .tabHeading {
+    justify-content: center;
+  }
+}

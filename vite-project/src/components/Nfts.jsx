@@ -73,7 +73,7 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
         />
       </div>
 
-      <div className="nftList">
+      <div className="nftList sm:justifyContent: center">
         {filteredNfts.length > 0 &&
           filteredNfts.map((e) => {
             return (
