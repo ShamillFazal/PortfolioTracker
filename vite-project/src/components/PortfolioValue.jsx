@@ -19,7 +19,7 @@ function PortfolioValue({ nativeValue, tokens, wallet }) {
 
   return (
     <>
-      <div className="container mx-auto flex justify-end">
+      <div className="container mx-auto w-full lg:max-w-screen-lg xl:max-w-screen-xl flex justify-end">
         <div className="rounded-3xl w-96 flex items-center p-8">
           <div className="pr-6">
             <Avatar

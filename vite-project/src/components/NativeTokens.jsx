@@ -36,6 +36,7 @@ function NativeTokens({
       <div className="tabHeading">
         Native Balance <Reload onClick={getNativeBalance} />
       </div>
+      <div className="hidden md:block">
       {nativeBalance > 0 && nativeValue > 0 && (
         <Table
           pageSize={1}
@@ -50,6 +51,7 @@ function NativeTokens({
           ]}
         />
       )}
+        </div>
     </>
   );
 }

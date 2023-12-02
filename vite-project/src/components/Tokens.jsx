@@ -32,7 +32,7 @@ function Tokens({ wallet, chain, tokens, setTokens }) {
     <>
       
         <div className="tabHeading">Assets<Reload onClick={getTokenBalances}/></div>
-
+        <div className="hidden md:block">
         {tokens.length > 0 && (
 
         <Table
@@ -48,6 +48,7 @@ function Tokens({ wallet, chain, tokens, setTokens }) {
           ]}
         />
         )}
+        </div>
 
       
     </>
