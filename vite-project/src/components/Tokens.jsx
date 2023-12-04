@@ -50,6 +50,21 @@ function Tokens({ wallet, chain, tokens, setTokens }) {
         )}
         </div>
 
+        <div className="block md:hidden">
+        {/* Display a grid for smaller screens */}
+        {tokens.length > 0 && (
+          <div className="grid grid-cols-1 gap-4">
+            {tokens.map((token) => (
+              <div key={token.symbol} className="bg-gray-200 p-2 rounded-lg">
+                <div>{token.symbol}</div>
+                <div>Balance: {token.bal}</div>
+                <div>Value: ${token.value}</div>
+                </div> 
+                ))}
+                </div>
+                )}
+                </div>
+
       
     </>
   );
