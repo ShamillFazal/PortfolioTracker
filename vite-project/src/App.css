@@ -35,12 +35,19 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  color: grey;
   background-color: white;
   gap: 5px;
-  border-radius: 5px;
+  border-radius: 12px;
   padding: 10px;
   border: 1px solid lightgray;
+  color: black;
+  font-weight: bold;
+
+
+}
+
+.nftInfo img {
+  border-radius: 8px;
 }
 
 .nftList {

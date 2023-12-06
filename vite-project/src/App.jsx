@@ -7,6 +7,7 @@ import PortfolioValue from "./components/PortfolioValue";
 import TransferHistory from "./components/TransferHistory";
 import Nfts from "./components/Nfts";
 import { TabList, Tab } from "@web3uikit/core";
+import Footer from "./components/Footer";
 
 function App() {
   const [wallet, setWallet] = useState("");
@@ -66,6 +67,7 @@ function App() {
             />
           </Tab>
         </TabList>
+        <Footer />
       </div>
     </div>
   );
