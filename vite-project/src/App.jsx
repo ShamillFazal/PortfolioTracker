@@ -67,8 +67,8 @@ function App() {
             />
           </Tab>
         </TabList>
-        <Footer />
       </div>
+        <Footer />
     </div>
   );
 }
