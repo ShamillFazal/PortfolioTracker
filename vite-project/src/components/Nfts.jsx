@@ -20,7 +20,7 @@ function Nfts({ wallet, chain, nfts, setNfts, filteredNfts, setFilteredNfts }) {
   }, [searchQuery, nfts]);
 
   async function getUserNfts() {
-    const response = await axios.get("http://localhost:8080/nftBalance", {
+    const response = await axios.get("https://c-a-t.onrender.com/nftBalance", {
       params: {
         address: wallet,
         chain: chain,

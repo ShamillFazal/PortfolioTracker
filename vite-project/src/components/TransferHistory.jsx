@@ -5,7 +5,7 @@ import { Table } from "@web3uikit/core";
 
 function TransferHistory({ chain, wallet, transfers, setTransfers }) {
   async function getTransfers() {
-    const response = await axios.get("http://localhost:8080/tokenTransfers", {
+    const response = await axios.get("https://c-a-t.onrender.com/tokenTransfers", {
       params: {
         address: wallet,
         chain: chain,

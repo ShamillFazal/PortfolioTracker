@@ -5,7 +5,7 @@ import { Table } from "@web3uikit/core";
 
 function Tokens({ wallet, chain, tokens, setTokens }) {
   async function getTokenBalances() {
-    const response = await axios.get("http://localhost:8080/tokenBalances", {
+    const response = await axios.get("https://c-a-t.onrender.com/tokenBalances", {
       params: {
         address: wallet,
         chain: chain,

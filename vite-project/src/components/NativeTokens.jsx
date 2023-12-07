@@ -12,7 +12,7 @@ function NativeTokens({
   setNativeValue,
 }) {
   async function getNativeBalance() {
-    const response = await axios.get("http://localhost:8080/nativeBalance", {
+    const response = await axios.get("https://c-a-t.onrender.com/nativeBalance", {
       params: {
         address: wallet,
         chain: chain,
