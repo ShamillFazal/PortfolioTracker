@@ -23,7 +23,7 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
       <div className="tabHeading">
         History <Reload onClick={getTransfers} />
       </div>
-      <div>
+      <div className="hidden md:block">
         {transfers.length > 0 && (
           <Table
             pageSize={8}
@@ -47,6 +47,20 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
           />
         )}
       </div>
+      <div className="block md:hidden">
+        {/* Display only token, amount, and date for smaller screens */}
+        {transfers.length > 0 && (
+          <div>
+            {transfers.map((transfer) => (
+              <div key={transfer.block_timestamp} className="bg-gray-200 p-2 mb-4 rounded-lg">
+                <div>{transfer.token_symbol}</div>
+                <div>{(Number(transfer.value) / Number(`1e${transfer.token_decimals}`)).toFixed(3)}</div>
+                <div>{new Date(transfer.block_timestamp).toLocaleString()}</div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 }
@@ -57,6 +71,5 @@ TransferHistory.propTypes = {
   transfers: PropTypes.array.isRequired,
   setTransfers: PropTypes.func.isRequired,
 };
-
 
 export default TransferHistory;
