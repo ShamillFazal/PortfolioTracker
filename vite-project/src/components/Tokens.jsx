@@ -55,10 +55,12 @@ function Tokens({ wallet, chain, tokens, setTokens }) {
         {tokens.length > 0 && (
           <div className="grid grid-cols-1 gap-4">
             {tokens.map((token) => (
-              <div key={token.symbol} className="bg-gray-200 p-2 rounded-lg">
-                <div>{token.symbol}</div>
-                <div>Balance: {token.bal}</div>
-                <div>Value: ${token.value}</div>
+              <div key={token.symbol} className="bg-gray-200 p-2 rounded-lg flex flex-row justify-between items-center">
+                <div className="basis-1/4">{token.symbol}</div>
+                <div className="">
+                <div className="flex-grow text-right">${token.value}</div>
+                <div>{token.bal}</div>
+                </div>
                 </div> 
                 ))}
                 </div>

@@ -55,10 +55,12 @@ function NativeTokens({
         <div className="block md:hidden">
         {/* Display only balance and value for smaller screens */}
         {nativeBalance > 0 && nativeValue > 0 && (
-          <div className="bg-gray-200 p-2 rounded-lg">
-            <div>Native Token</div>
-            <div>Balance: {nativeBalance}</div>
+          <div className="bg-gray-200 p-2 rounded-lg flex flex-row justify-between items-center">
+            <div className="basis-1/4">Native Token</div>
+            <div>
             <div>Value: ${nativeValue}</div>
+            <div>Balance: {nativeBalance}</div>
+            </div>
           </div>
         )}
       </div>
