@@ -33,7 +33,7 @@ function PortfolioValue({ nativeValue, tokens, wallet }) {
             <p className="text-lg">{`${wallet.slice(0, 6)}...${wallet.slice(
               36
             )}`}</p>
-            <p className="text-5xl"> {`$${totalValue}`}</p>
+            <p className="text-4xl"> {`$${totalValue}`}</p>
           </div>
         </div>
       </div>

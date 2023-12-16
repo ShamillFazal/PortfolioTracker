@@ -52,10 +52,13 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
         {transfers.length > 0 && (
           <div>
             {transfers.map((transfer) => (
-              <div key={transfer.block_timestamp} className="bg-gray-200 p-2 mb-4 rounded-lg">
-                <div>{transfer.token_symbol}</div>
+              <div key={transfer.block_timestamp} className="bg-gray-200 p-2 mb-4 rounded-lg flex flex-row justify-between items-center">
+                <div className="basis-1/4">{transfer.token_symbol}</div>
+                <div>
                 <div>{(Number(transfer.value) / Number(`1e${transfer.token_decimals}`)).toFixed(3)}</div>
-                <div>{new Date(transfer.block_timestamp).toLocaleString()}</div>
+                <div>{`${transfer.transaction_hash.slice(0, 3)}...${transfer.transaction_hash.slice(-3)}`}</div>
+                <div>{new Date(transfer.block_timestamp).toLocaleDateString()}</div>
+                </div>
               </div>
             ))}
           </div>
