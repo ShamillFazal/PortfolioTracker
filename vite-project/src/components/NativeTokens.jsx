@@ -26,24 +26,35 @@ function NativeTokens({
   const getNativeToken = () => nativeTokens[chain];
 
   async function getNativeBalance() {
-    const response = await axios.get("https://c-a-t.onrender.com/nativeBalance", {
-      params: {
-        address: wallet,
-        chain: chain,
-      },
-    });
-
-    if (response.data.balance && response.data.usd) {
-      // Checking if response data contains balance and USD values
-      setNativeBalance((Number(response.data.balance) / 1e18).toFixed(3)); // Setting native balance after converting and formatting
-      setNativeValue(
-        (
-          (Number(response.data.balance) / 1e18) *
-          Number(response.data.usd)
-        ).toFixed(2)
-      );
+    try {
+      const response = await axios.get("https://c-a-t.onrender.com/nativeBalance", {
+        params: {
+          address: wallet,
+          chain: chain,
+        },
+      });
+  
+      if (response.data.balance && response.data.usd) {
+        // Checking if response data contains balance and USD values
+        setNativeBalance((Number(response.data.balance) / 1e18).toFixed(3)); // Setting native balance after converting and formatting
+        setNativeValue(
+          (
+            (Number(response.data.balance) / 1e18) *
+            Number(response.data.usd)
+          ).toFixed(2)
+        );
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 500) {
+        // Display a popup for rate limit exceeded
+        alert("Daily rate limit exceeded. Please try again in 24hrs.");
+      } else {
+        // Handle other errors
+        console.error("Error fetching native balance:", error);
+      }
     }
   }
+  
 
   return (
     <>
