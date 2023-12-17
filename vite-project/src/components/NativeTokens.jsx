@@ -68,7 +68,7 @@ function NativeTokens({
       </div>
       <div className="block md:hidden">
         {nativeBalance > 0 && nativeValue > 0 && (
-          <div className="bg-gray-200 p-2 rounded-lg flex flex-row justify-between items-center">
+          <div className="bg-white-200 shadow-md p-2 rounded-lg flex flex-row justify-between items-center">
             <div className="basis-1/4">{getNativeToken()}</div>
             <div>
               <div className="flex-grow text-right">${nativeValue}</div>

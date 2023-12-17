@@ -73,7 +73,7 @@ function TransferHistory({ chain, wallet, transfers, setTransfers }) {
               return (
                 <div
                   key={`${transfer.block_timestamp}-${transfer.transaction_hash}-${index}`}
-                  className="bg-gray-200 p-2 mb-4 rounded-lg flex flex-row justify-between items-center"
+                  className="bg-white-200 shadow-md p-2 mb-4 rounded-lg flex flex-row justify-between items-center"
                 >
                   <div className="basis-1/4">{transfer.token_symbol}</div>
                   <div>
