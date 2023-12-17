@@ -29,19 +29,13 @@ function PortfolioValue({ nativeValue, tokens, wallet }) {
               theme="image"
             />
           </div>
-          <div>
+          <div className="value">
             <p className="text-lg">{`${wallet.slice(0, 6)}...${wallet.slice(
               36
             )}`}</p>
-            <p className="text-5xl"> {`$${totalValue}`}</p>
+            <p className="text-4xl"> {`$${totalValue}`}</p>
           </div>
         </div>
-        {/* <div className="flex-initial border-solid border-2 border-gray rounded-md max-w-sm">
-          <p className="text-xl">Net Worth</p>
-          <p>
-            <p className="text-3xl">${totalValue}</p>
-          </p>
-        </div> */}
       </div>
     </>
   );
