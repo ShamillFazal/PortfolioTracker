@@ -1,18 +1,39 @@
-# PortfolioTracker
-Crypto portfolio dashboard project.
+# Crypto Portfolio Tracker
 
-## MVP ##
+Welcome to the Crypto Portfolio Tracker! This project is a web application designed to track and display the native and ERC-20 token balances associated with a user-inputted wallet address. The inspiration behind this project stems from my passion for blockchain and web3 technologies, driven by years of involvement in the crypto space. I embarked on building this app not only to enhance my coding skills but also to create a tool that aligns with my interest in cryptocurrency.
 
-The MVP will be consist of an app that dislays both the native & erc-20 token balances of a user inputted wallet address. The App will Support several prominent EVM chains.
+## MVP (Minimum Viable Product)
 
-The tech stack for the app will be React, Vite, Express, Node & Tailwind CSS (most likely) & will pull data through Moralis API.
+The MVP of the Crypto Portfolio Tracker includes an application that showcases both native and ERC-20 token balances for a specified wallet address. The app supports several prominent EVM (Ethereum Virtual Machine) chains. The tech stack for this project comprises React, Vite, Express, Node.js, and Tailwind CSS. Data is pulled through the Moralis API, a service that simplifies and accelerates the development of decentralized applications.
 
-## Further Development ## 
+## Features and Further Development
 
-I aim to add several features to the project overtime including Fiat on/off ramp through third parties and possible token charts.
+In the future, I plan to expand the capabilities of the Crypto Portfolio Tracker by incorporating additional features. Some of the proposed enhancements include:
+- Fiat on/off ramp through third-party services.
+- Integration of token charts for a visual representation of token performance.
 
-## Notes ##
+## Challenges and Learning
 
-I am building this app to further my coding skills and also for fun as I really enjoy both coding and crypto! 😄
+Throughout the development process, I encountered various challenges and valuable learning experiences. One notable hurdle was related to displaying NFT (Non-Fungible Token) images. Due to the diverse and often unstructured nature of NFT metadata, achieving a seamless display presented difficulties, especially with older NFTs.
 
-If anyone is reading this and would like to collaborate or add any input or suggestions, please feel free to do so! 
+I also gained insights into responsive design, adapting elements to display optimally on both desktop and mobile devices. For instance, I modified the presentation of data tables on mobile devices for better user experience.
+
+## Tech Stack
+
+- React
+- Node.js
+- Express.js
+- Vite
+- Tailwind CSS
+- Moralis API
+
+## Collaborate and Contribute
+
+If you're reading this and have ideas, suggestions, or would like to collaborate, your input is more than welcome! Feel free to reach out, and let's make this Crypto Portfolio Tracker even better.
+
+Happy coding and hodling! 😄
+
+## Try it out!
+
+https://crypto-asset-tracker.netlify.app/
+
