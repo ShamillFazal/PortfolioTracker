@@ -37,3 +37,9 @@ Happy coding and hodling! 😄
 
 https://crypto-asset-tracker.netlify.app/
 
+![image](https://github.com/ShamillFazal/PortfolioTracker/assets/94766229/a413c8c1-db5f-476d-8a10-9679fdbe2ecb)
+![Screenshot 2024-01-31 140457](https://github.com/ShamillFazal/PortfolioTracker/assets/94766229/3399b372-f627-4230-a1e0-edb4342e28f8)
+
+
+
+
